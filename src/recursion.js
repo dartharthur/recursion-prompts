@@ -10,11 +10,11 @@ var factorial = function(n) {
   if (n < 0) {
     return null;
   }
-  
+
   if (n == 0 || n == 1) {
     return 1;
   }
-  
+
   return n * factorial(n - 1);
 };
 
@@ -24,7 +24,7 @@ var sum = function(array) {
   if (array.length === 0) {
     return 0;
   }
-    
+
   return array[0] + sum(array.slice(1));
 };
 
@@ -39,7 +39,7 @@ var isEven = function(n) {
   }
 
   if (n === 1) {
-    return false
+    return false;
   }
 
   return n > 0 ? isEven(n - 2) : isEven(n + 2);
@@ -53,7 +53,7 @@ var sumBelow = function(n) {
     return 0;
   }
 
-  return n > 0 ? (n - 1) + sumBelow(n - 1) : (n + 1) + sumBelow(n + 1);
+  return n > 0 ? n - 1 + sumBelow(n - 1) : n + 1 + sumBelow(n + 1);
 };
 
 // 6. Get the integers within a range (x, y).
@@ -74,7 +74,13 @@ var exponent = function(base, exp) {};
 var powerOfTwo = function(n) {};
 
 // 9. Write a function that reverses a string.
-var reverse = function(string) {};
+var reverse = function(string) {
+  if (string.length === 0) {
+    return string;
+  }
+
+  return reverse(string.slice(1)) + string[0];
+};
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {};
