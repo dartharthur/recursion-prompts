@@ -52,7 +52,11 @@ var isEven = function(n) {
     return false;
   }
 
-  return n > 0 ? isEven(n - 2) : isEven(n + 2);
+  if (n > 0) {
+    return isEven(n - 2);
+  } else {
+    return isEven(n + 2);
+  }
 };
 
 // 5. Sum all integers below a given integer.
@@ -63,7 +67,11 @@ var sumBelow = function(n) {
     return 0;
   }
 
-  return n > 0 ? n - 1 + sumBelow(n - 1) : n + 1 + sumBelow(n + 1);
+  if (n > 0) {
+    return n - 1 + sumBelow(n - 1);
+  } else {
+    return n + 1 + sumBelow(n + 1);
+  }
 };
 
 // 6. Get the integers within a range (x, y).
@@ -85,11 +93,11 @@ var exponent = function(base, exp) {
   }
 
   if (exp > 2) {
-    return (base * base) * exponent(base, exp - 2);
+    return base * base * exponent(base, exp - 2);
   } else if (exp > 0) {
     return base * exponent(base, exp - 1);
   } else {
-    return Number((1 / base) * exponent(base, exp + 1).toPrecision(12));
+    return Number(1 / base * exponent(base, exp + 1).toPrecision(12));
   }
 };
 
