@@ -157,13 +157,17 @@ var palindrome = function(string) {
 var modulo = function(x, y) {
   if (x === 0 && y === 0) {
     return NaN;
-  }
-
-  if (x < y) {
+  } else if (x - y === y) {
+    return 0;
+  } else if (y > 0 && x < y) {
     return x;
   }
 
-  return modulo(x - y, y);
+  if (y < 0) {
+    return modulo(x - -y, -y);
+  } else {
+    return modulo(x - y, y);
+  }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
