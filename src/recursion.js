@@ -299,7 +299,21 @@ var countKeysInObj = function(obj, key) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
-var countValuesInObj = function(obj, value) {};
+var countValuesInObj = function(obj, value) {
+  var entries = typeof obj === 'object' ? Object.entries(obj) : [];
+
+  if (entries.length === 0) {
+    return 0;
+  }
+
+  return entries.reduce(function(total, [key, valToInspect]) {
+    if (value === valToInspect) {
+      return total + 1 + countValuesInObj(obj[key], value);
+    } else {
+      return total + countValuesInObj(obj[key], value);
+    }
+  }, 0);
+};
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
