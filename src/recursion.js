@@ -327,13 +327,9 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {};
 var fibonacci = function(n) {
   if (n <= 0) {
     return null;
-  }
-
-  if (n === 1) {
+  } else if (n === 1) {
     return [0, 1];
-  }
-
-  if (n === 2) {
+  } else if (n === 2) {
     return [0, 1, 1];
   }
 
@@ -347,7 +343,17 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {};
+var nthFibo = function(n) {
+  if (n < 0) {
+    return null;
+  } else if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  }
+
+  return nthFibo(n - 1) + nthFibo(n - 2);
+};
 
 // 27. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
