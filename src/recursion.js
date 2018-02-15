@@ -387,7 +387,21 @@ var capitalizeFirst = function(array) {
 //   e: {e: {e: 2}, ee: 'car'}
 // };
 // nestedEvenSum(obj1); // 10
-var nestedEvenSum = function(obj) {};
+var nestedEvenSum = function(obj) {
+  var entries = typeof obj === 'object' ? Object.entries(obj) : [];
+
+  if (entries.length === 0) {
+    return 0;
+  }
+
+  return entries.reduce(function(total, [key, value]) {
+    if (value % 2 === 0) {
+      return total + value + nestedEvenSum(obj[key]);
+    } else {
+      return total + nestedEvenSum(obj[key]);
+    }
+  }, 0);
+};
 
 // 30. Flatten an array containing nested arrays.
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
